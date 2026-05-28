@@ -734,6 +734,23 @@
             background: linear-gradient(90deg, transparent, var(--amber), transparent);
         }
 
+        .connector + .node::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 50%;
+            width: 5px;
+            height: 5px;
+            border-top: 1px solid var(--border-strong);
+            border-right: 1px solid var(--border-strong);
+            transform: translateY(-50%) rotate(45deg);
+            z-index: 2;
+        }
+
+        .connector.amber + .node::before {
+            border-color: rgba(216, 168, 77, 0.4);
+        }
+
         @keyframes sweep {
             to { left: 104%; }
         }
@@ -777,15 +794,14 @@
         }
 
         .ingest-lines {
-            position: absolute;
-            left: 148px;
-            top: 24px;
-            width: 230px;
+            position: relative;
+            width: 100%;
             height: 170px;
             overflow: visible;
+            z-index: 1;
         }
 
-        .ingest-lines path {
+        .ingest-lines path.line {
             fill: none;
             stroke: var(--green-line);
             stroke-width: 1;
@@ -799,10 +815,11 @@
 
         .queue-dots {
             position: absolute;
-            left: 330px;
+            left: 200px;
             top: 104px;
             display: flex;
             gap: 8px;
+            z-index: 3;
         }
 
         .queue-dots span {
@@ -1755,14 +1772,18 @@
                                     <div class="source"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg>Documents</div>
                                     <div class="source"><svg viewBox="0 0 24 24"><path d="m13 2-9 12h8l-1 8 9-12h-8l1-8Z"/></svg>Events</div>
                                 </div>
-                                <svg class="ingest-lines" viewBox="0 0 230 170" aria-hidden="true">
-                                    <path d="M0 20 C70 20 76 82 142 84"/>
-                                    <path d="M0 65 C66 65 78 86 142 86"/>
-                                    <path d="M0 110 C66 110 78 88 142 88"/>
-                                    <path d="M0 152 C70 152 76 92 142 90"/>
+                                <svg class="ingest-lines" viewBox="0 0 100 170" preserveAspectRatio="none" aria-hidden="true">
+                                    <defs>
+                                        <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+                                            <path d="M 2 2 L 6 5 L 2 8" fill="none" stroke="var(--green-line)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </marker>
+                                    </defs>
+                                    <path class="line" d="M0 20 C50 20 60 84 100 84" marker-end="url(#arrow)"/>
+                                    <path class="line" d="M0 65 C50 65 60 86 100 86" marker-end="url(#arrow)"/>
+                                    <path class="line" d="M0 110 C50 110 60 88 100 88" marker-end="url(#arrow)"/>
+                                    <path class="line" d="M0 152 C50 152 60 92 100 90" marker-end="url(#arrow)"/>
                                 </svg>
                                 <div class="queue-dots" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-                                <div></div>
                                 <div class="node green"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 7v5l-4 2v-7L4 5Z"/></svg>Extract &<br>Normalize</div>
                                 <div class="connector"></div>
                                 <div class="node green"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-5"/></svg>Validate &<br>Shape</div>
