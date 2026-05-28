@@ -1886,6 +1886,13 @@
         }
 
         /* Experience Section */
+        #experience {
+            grid-template-columns: 0px minmax(0, 1fr);
+            gap: 0;
+        }
+        #experience .stage-aside {
+            padding: 0;
+        }
         .exp-header {
             display: flex;
             justify-content: space-between;
@@ -1937,21 +1944,11 @@
             gap: 40px;
         }
         .exp-date-loc {
-            width: 160px;
+            width: 268px;
             flex-shrink: 0;
             position: relative;
             padding-top: 8px;
-        }
-        .exp-date-loc::before {
-            content: "";
-            position: absolute;
-            left: 4px;
-            top: 28px;
-            bottom: -40px;
-            border-left: 1px dashed rgba(159, 201, 133, 0.4);
-        }
-        .exp-item:last-child .exp-date-loc::before {
-            display: none;
+            padding-left: 68px;
         }
         .exp-date {
             display: flex;
@@ -1963,6 +1960,9 @@
             font-family: var(--mono);
         }
         .timeline-dot {
+            position: absolute;
+            left: 24px;
+            top: 13px;
             width: 9px;
             height: 9px;
             background: var(--green);
@@ -1975,7 +1975,6 @@
             gap: 8px;
             color: var(--muted);
             font-size: 0.85rem;
-            padding-left: 21px;
         }
         .exp-loc svg {
             width: 14px;
@@ -2027,15 +2026,22 @@
         }
 
         @media (max-width: 860px) {
+            #experience {
+                grid-template-columns: 0px minmax(0, 1fr);
+            }
             .exp-header {
                 flex-direction: column;
+            }
+            .exp-date-loc {
+                width: 100%;
+                padding-left: 56px;
+            }
+            .timeline-dot {
+                left: 18px;
             }
             .exp-item {
                 flex-direction: column;
                 gap: 16px;
-            }
-            .exp-date-loc::before {
-                display: none;
             }
             .exp-card-header {
                 flex-direction: column;
@@ -2356,8 +2362,6 @@
                 <section class="stage reveal" id="experience">
                     <aside class="stage-aside">
                         <div class="stage-code" style="font-size: 0.85rem; letter-spacing: 0;">EX</div>
-                        <h2 class="stage-title">Experience</h2>
-                        <p class="stage-desc">My journey so far</p>
                     </aside>
                     
                     <div style="flex: 1; min-width: 0;">
