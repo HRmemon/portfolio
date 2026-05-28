@@ -711,6 +711,13 @@
             font-size: 0.62rem;
         }
 
+        .ingest-map .node,
+        .build-map .node,
+        .deploy-map .node {
+            width: 100%;
+            background: #080909;
+        }
+
         .connector {
             position: relative;
             z-index: 1;
@@ -737,7 +744,7 @@
         .connector + .node::before {
             content: "";
             position: absolute;
-            left: -6px;
+            left: -8px;
             top: 50%;
             width: 5px;
             height: 5px;
@@ -762,6 +769,10 @@
             grid-template-columns: 150px minmax(90px, 1fr) 115px minmax(60px, 0.45fr) 115px minmax(60px, 0.45fr) 115px;
             align-items: center;
             min-height: 212px;
+        }
+
+        .ingest-map .node {
+            min-height: 78px;
         }
 
         .source-stack {
@@ -813,26 +824,6 @@
             to { stroke-dashoffset: -60; }
         }
 
-        .queue-dots {
-            position: absolute;
-            left: 200px;
-            top: 104px;
-            display: flex;
-            gap: 8px;
-            z-index: 3;
-        }
-
-        .queue-dots span {
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: var(--green);
-            animation: queueBlink 1.8s ease-in-out infinite;
-        }
-
-        .queue-dots span:nth-child(2) { animation-delay: 0.2s; }
-        .queue-dots span:nth-child(3) { animation-delay: 0.4s; }
-        .queue-dots span:nth-child(4) { animation-delay: 0.6s; }
 
         @keyframes queueBlink {
             50% { opacity: 0.25; transform: translateX(5px); }
@@ -1039,48 +1030,175 @@
         .build-map {
             position: relative;
             z-index: 1;
+            width: min(100%, 612px);
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: 78px 32px 78px 34px minmax(132px, 1fr) 34px 96px 32px 96px;
+            grid-template-columns: 78px 32px 78px 34px 132px 34px 96px 32px 96px;
             align-items: center;
-            min-height: 230px;
+            min-height: 244px;
         }
 
         .build-map .node {
             min-width: 0;
+            min-height: 74px;
+            height: 74px;
+        }
+
+        .build-map .connector[style*="border: 0"] {
+            background: transparent;
+        }
+
+        .build-map .connector[style*="border: 0"]::after {
+            display: none;
         }
 
         .branch-stack {
+            position: relative;
             display: grid;
-            gap: 12px;
+            gap: 10px;
+        }
+
+        .branch-stack .node::before {
+            content: "";
+            position: absolute;
+            left: -8px;
+            top: 50%;
+            width: 5px;
+            height: 5px;
+            border-top: 1px solid var(--amber);
+            border-right: 1px solid var(--amber);
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .split-lines, .merge-lines {
+            position: absolute;
+            top: 37px;
+            bottom: 37px;
+            width: 17px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .split-lines {
+            right: 100%;
+            border-top: 1px dashed var(--amber);
+            border-bottom: 1px dashed var(--amber);
+            border-left: 1px dashed var(--amber);
+            border-radius: 8px 0 0 8px;
+        }
+
+        .split-lines::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            width: 17px;
+            border-top: 1px dashed var(--amber);
+        }
+
+        .split-lines::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            border-top: 1px dashed var(--amber);
+        }
+
+        .merge-lines {
+            left: 100%;
+            border-top: 1px dashed var(--amber);
+            border-bottom: 1px dashed var(--amber);
+            border-right: 1px dashed var(--amber);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .merge-lines::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 17px;
+            border-top: 1px dashed var(--amber);
+        }
+
+        .merge-lines::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            border-top: 1px dashed var(--amber);
         }
 
         .retry-loop {
             position: absolute;
-            inset: 18px 36px 16px 218px;
+            height: 48px;
             border: 1px dashed rgba(216, 168, 77, 0.58);
-            border-left: 0;
-            border-radius: 0 12px 12px 0;
             pointer-events: none;
+            z-index: 0;
         }
 
-        .retry-loop::before,
-        .retry-loop::after {
+        .retry-loop.top {
+            inset: 7px 48px auto 222px;
+            border-bottom: 0;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .retry-loop.top::before {
             content: "Retry (attempt #7)";
             position: absolute;
             top: -10px;
             left: 50%;
             padding: 0 12px;
-            color: var(--amber);
             background: var(--panel);
+            color: var(--amber);
             font-family: var(--mono);
             font-size: 0.68rem;
             transform: translateX(-50%);
         }
 
-        .retry-loop::after {
+        .retry-loop.top::after {
+            content: "";
+            position: absolute;
+            left: -3px;
+            bottom: -1px;
+            width: 5px;
+            height: 5px;
+            border-bottom: 1px solid var(--amber);
+            border-right: 1px solid var(--amber);
+            transform: rotate(45deg);
+        }
+
+        .retry-loop.bottom {
+            inset: auto 48px 7px 222px;
+            border-top: 0;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .retry-loop.bottom::before {
             content: "Fallback Provider";
-            top: auto;
+            position: absolute;
             bottom: -10px;
+            left: 50%;
+            padding: 0 12px;
+            background: var(--panel);
+            color: var(--amber);
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            transform: translateX(-50%);
+        }
+
+        .retry-loop.bottom::after {
+            content: "";
+            position: absolute;
+            left: -3px;
+            top: -1px;
+            width: 5px;
+            height: 5px;
+            border-top: 1px solid var(--amber);
+            border-left: 1px solid var(--amber);
+            transform: rotate(45deg);
         }
 
         .hidden-note {
@@ -1118,14 +1236,16 @@
             position: relative;
             z-index: 1;
             display: grid;
-            grid-template-columns: repeat(6, minmax(90px, 1fr));
+            grid-template-columns: repeat(6, minmax(0, 1fr));
             align-items: center;
-            gap: 12px;
-            min-height: 192px;
+            gap: 10px;
+            min-height: 198px;
         }
 
         .deploy-map .node {
             min-width: 0;
+            min-height: 96px;
+            height: 96px;
         }
 
         .deploy-map::before {
@@ -1582,13 +1702,21 @@
             .deploy-map {
                 grid-template-columns: 1fr;
                 gap: 12px;
+                width: 100%;
+                min-height: auto;
+            }
+
+            .build-map .node,
+            .deploy-map .node {
+                height: auto;
             }
 
             .ingest-lines,
-            .queue-dots,
             .retry-loop,
             .deploy-map::before,
-            .connector {
+            .connector,
+            .split-lines,
+            .merge-lines {
                 display: none;
             }
 
@@ -1783,12 +1911,11 @@
                                     <path class="line" d="M0 110 C50 110 60 88 100 88" marker-end="url(#arrow)"/>
                                     <path class="line" d="M0 152 C50 152 60 92 100 90" marker-end="url(#arrow)"/>
                                 </svg>
-                                <div class="queue-dots" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
                                 <div class="node green"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 7v5l-4 2v-7L4 5Z"/></svg>Extract &<br>Normalize</div>
                                 <div class="connector"></div>
                                 <div class="node green"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-5"/></svg>Validate &<br>Shape</div>
                                 <div class="connector"></div>
-                                <div class="node amber hidden-note" data-note="regex holding civilization together"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v10c0 1.7 3.1 3 7 3s7-1.3 7-3V5"/><path d="M16 15v4"/><path d="M19 12v7"/><path d="M22 9v10"/></svg>Queue /<br>Store</div>
+                                <div class="node green hidden-note" data-note="regex holding civilization together"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v10c0 1.7 3.1 3 7 3s7-1.3 7-3V5"/><path d="M16 15v4"/><path d="M19 12v7"/><path d="M22 9v10"/></svg>Queue /<br>Store</div>
                             </div>
                         </div>
 
@@ -1822,17 +1949,20 @@
                     <div class="stage-main">
                         <div class="panel diagram">
                             <div class="build-map">
-                                <div class="retry-loop" aria-hidden="true"></div>
+                                <div class="retry-loop top" aria-hidden="true"></div>
+                                <div class="retry-loop bottom" aria-hidden="true"></div>
                                 <div class="node"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg>User Request</div>
                                 <div class="connector amber"></div>
                                 <div class="node hidden-note" data-note="the simple part, allegedly"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.7 15.4 6.3"/><path d="M8.6 13.3 15.4 17.7"/></svg>Auth / Routing</div>
-                                <div class="connector amber"></div>
+                                <div class="connector amber" style="border: 0"></div>
                                 <div class="branch-stack">
-                                    <div class="node"><svg viewBox="0 0 24 24"><path d="M8 8a4 4 0 0 1 8 0v8a4 4 0 0 1-8 0V8Z"/><path d="M12 4v16"/><path d="M8 12h8"/></svg>LLM Orchestrator</div>
+                                    <div class="split-lines"></div>
+                                    <div class="merge-lines"></div>
+                                    <div class="node"><svg viewBox="0 0 24 24"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/><path d="M6.002 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M19.938 10.5a4 4 0 0 1 .585.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M19.967 17.484A4 4 0 0 1 18 18"/></svg>LLM Orchestrator</div>
                                     <div class="node"><svg viewBox="0 0 24 24"><path d="m8 17-5-5 5-5"/><path d="m16 7 5 5-5 5"/></svg>Product Logic</div>
-                                    <div class="node hidden-note" data-note="temporary since March"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V22h-4v-.2a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H2v-4h.2a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3 1.7 1.7 0 0 0 1-1.5V2h4v.2a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8 1.7 1.7 0 0 0 1.5 1h.2v4h-.2a1.7 1.7 0 0 0-1.5 1Z"/></svg>Rules & Validation</div>
+                                    <div class="node hidden-note" data-note="temporary since March"><svg viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a8 8 0 0 1-1.63.66V4.6a2 2 0 0 0-1.3-.95 2 2 0 0 0-1.89.54l-.32.31a2 2 0 0 0 .22 3.03l.18.14a8 8 0 0 1-.65 1.63L4.2 9.15a2 2 0 0 0-.54 1.89 2 2 0 0 0 .95 1.3V12.6a8 8 0 0 1 .66 1.63l-.18.14a2 2 0 0 0-.22 3.03l.32.31a2 2 0 0 0 1.89.54 2 2 0 0 0 1.3-.95v-.18a8 8 0 0 1 1.63-.66v.18a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a8 8 0 0 1 1.63-.66v.18a2 2 0 0 0 1.3.95 2 2 0 0 0 1.89-.54l.32-.31a2 2 0 0 0-.22-3.03l-.18-.14a8 8 0 0 1 .65-1.63l.18.14a2 2 0 0 0 .54-1.89 2 2 0 0 0-.95-1.3v-.18a8 8 0 0 1-.66-1.63l.18-.14a2 2 0 0 0 .22-3.03l-.32-.31a2 2 0 0 0-1.89-.54 2 2 0 0 0-1.3.95v.18a8 8 0 0 1-1.63.66V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Rules & Validation</div>
                                 </div>
-                                <div class="connector amber"></div>
+                                <div class="connector amber" style="border: 0"></div>
                                 <div class="node amber"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-5"/></svg>Quality Gate<span class="sub">regex + LLM checks</span></div>
                                 <div class="connector amber"></div>
                                 <div class="node amber hidden-note" data-note="there is nothing more permanent than a temporary solution"><svg viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 16 9 5 9-5"/></svg>Realtime +<br>Persist</div>
