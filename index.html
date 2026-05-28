@@ -1041,7 +1041,7 @@
         .build-map .node {
             min-width: 0;
             min-height: 74px;
-            height: 74px;
+            height: auto;
         }
 
         .build-map .connector[style*="border: 0"] {
@@ -1133,18 +1133,20 @@
 
         .retry-loop {
             position: absolute;
-            height: 48px;
-            border: 1px dashed rgba(216, 168, 77, 0.58);
             pointer-events: none;
-            z-index: 0;
+            z-index: 3;
         }
 
         .retry-loop.top {
-            top: 55px;
-            left: 222px;
-            right: 96px;
+            top: 15px;
+            left: 288px;
+            right: 60px;
+            height: 27px;
+            border-top: 1px dashed rgba(216, 168, 77, 0.58);
+            border-left: 1px dashed rgba(216, 168, 77, 0.58);
             border-bottom: 0;
-            border-radius: 12px 12px 0 0;
+            border-right: 0;
+            border-radius: 12px 0 0 0;
         }
 
         .retry-loop.top::before {
@@ -1163,21 +1165,36 @@
         .retry-loop.top::after {
             content: "";
             position: absolute;
-            left: -3px;
-            bottom: -1px;
-            width: 5px;
-            height: 5px;
-            border-bottom: 1px solid var(--amber);
-            border-right: 1px solid var(--amber);
+            top: -1px;
+            right: -12px;
+            width: 12px;
+            height: 111px;
+            border-top: 1px dashed rgba(216, 168, 77, 0.58);
+            border-right: 1px dashed rgba(216, 168, 77, 0.58);
+            border-radius: 0 12px 0 0;
+        }
+
+        .retry-loop.top .arrow {
+            position: absolute;
+            left: -4px;
+            bottom: -4px;
+            width: 7px;
+            height: 7px;
+            border-bottom: 1px solid rgba(216, 168, 77, 0.8);
+            border-right: 1px solid rgba(216, 168, 77, 0.8);
             transform: rotate(45deg);
         }
 
         .retry-loop.bottom {
-            bottom: 55px;
-            left: 222px;
-            right: 96px;
+            bottom: 15px;
+            left: 288px;
+            right: 60px;
+            height: 27px;
+            border-bottom: 1px dashed rgba(216, 168, 77, 0.58);
+            border-left: 1px dashed rgba(216, 168, 77, 0.58);
             border-top: 0;
-            border-radius: 0 0 12px 12px;
+            border-right: 0;
+            border-radius: 0 0 0 12px;
         }
 
         .retry-loop.bottom::before {
@@ -1196,12 +1213,23 @@
         .retry-loop.bottom::after {
             content: "";
             position: absolute;
-            left: -3px;
-            top: -1px;
-            width: 5px;
-            height: 5px;
-            border-top: 1px solid var(--amber);
-            border-left: 1px solid var(--amber);
+            bottom: -1px;
+            right: -12px;
+            width: 12px;
+            height: 111px;
+            border-bottom: 1px dashed rgba(216, 168, 77, 0.58);
+            border-right: 1px dashed rgba(216, 168, 77, 0.58);
+            border-radius: 0 0 12px 0;
+        }
+
+        .retry-loop.bottom .arrow {
+            position: absolute;
+            left: -4px;
+            top: -4px;
+            width: 7px;
+            height: 7px;
+            border-top: 1px solid rgba(216, 168, 77, 0.8);
+            border-left: 1px solid rgba(216, 168, 77, 0.8);
             transform: rotate(45deg);
         }
 
@@ -1959,8 +1987,8 @@
                     <div class="stage-main">
                         <div class="panel diagram">
                             <div class="build-map">
-                                <div class="retry-loop top" aria-hidden="true"></div>
-                                <div class="retry-loop bottom" aria-hidden="true"></div>
+                                <div class="retry-loop top" aria-hidden="true"><div class="arrow"></div></div>
+                                <div class="retry-loop bottom" aria-hidden="true"><div class="arrow"></div></div>
                                 <div class="node"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg>User Request</div>
                                 <div class="connector amber"></div>
                                 <div class="node hidden-note" data-note="the simple part, allegedly"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.7 15.4 6.3"/><path d="M8.6 13.3 15.4 17.7"/></svg>Auth / Routing</div>
