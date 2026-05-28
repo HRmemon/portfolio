@@ -1133,14 +1133,16 @@
 
         .retry-loop {
             position: absolute;
-            height: 24px;
+            height: 48px;
             border: 1px dashed rgba(216, 168, 77, 0.58);
             pointer-events: none;
             z-index: 0;
         }
 
         .retry-loop.top {
-            inset: 12px 48px auto 222px;
+            top: 55px;
+            left: 222px;
+            right: 96px;
             border-bottom: 0;
             border-radius: 12px 12px 0 0;
         }
@@ -1171,7 +1173,9 @@
         }
 
         .retry-loop.bottom {
-            inset: auto 48px 12px 222px;
+            bottom: 55px;
+            left: 222px;
+            right: 96px;
             border-top: 0;
             border-radius: 0 0 12px 12px;
         }
@@ -1246,6 +1250,12 @@
             min-width: 0;
             min-height: 96px;
             height: 96px;
+            border-color: rgba(159, 201, 133, 0.28);
+            color: var(--green);
+        }
+
+        .deploy-map .node svg {
+            color: var(--green);
         }
 
         .deploy-map::before {
