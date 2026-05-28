@@ -1892,6 +1892,21 @@
             grid-template-columns: 0px minmax(0, 1fr);
             gap: 0;
         }
+        #experience::before {
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent 0px,
+                transparent 120px,
+                color-mix(in srgb, var(--green) 30%, transparent) 160px,
+                var(--green) 180px,
+                transparent 180px,
+                transparent 200px
+            );
+            background-size: 100% 200px;
+        }
+        #experience .stage-aside::before {
+            border-color: color-mix(in srgb, var(--green) 35%, transparent);
+        }
         #experience .stage-aside {
             padding: 0;
         }
@@ -2097,9 +2112,8 @@
         <main>
             <section class="hero container" id="home">
                 <div class="hero-copy-block reveal visible">
-                    <div class="prompt">&gt; engineer@hr:~</div>
+                    <div class="prompt">&gt; engineer@hassan:~</div>
                     <h1>I design, build and operate <span>production systems.</span></h1>
-                    <p class="hero-copy">From data ingestion to reliable systems at scale. I ship, operate and iterate without making the interface look like a crypto dashboard.</p>
                     <div class="hero-stats" aria-label="Career stats">
                         <div class="stat">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="9"/></svg>
