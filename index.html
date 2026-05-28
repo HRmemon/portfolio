@@ -218,14 +218,7 @@
         }
 
         .progress-rail {
-            position: fixed;
-            left: 26px;
-            top: 96px;
-            bottom: 36px;
-            z-index: 20;
-            width: 1px;
-            background: rgba(205, 199, 187, 0.12);
-            pointer-events: none;
+            display: none;
         }
 
         .progress-fill {
@@ -516,6 +509,7 @@
             min-height: 300px;
             border-top: 1px solid rgba(205, 199, 187, 0.07);
             padding: 18px 0;
+            position: relative;
         }
 
         .stage:first-child {
@@ -527,14 +521,85 @@
             padding: 28px 22px 28px 68px;
         }
 
+        .stage::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 28px;
+            width: 2px;
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent 0px,
+                transparent 120px,
+                color-mix(in srgb, currentColor 30%, transparent) 160px,
+                currentColor 180px,
+                transparent 180px,
+                transparent 200px
+            );
+            background-size: 100% 200px;
+            animation: stage-pulse 3s linear infinite;
+            z-index: 1;
+        }
+
+        .stage:first-child::before { top: -20px; }
+        .stage:last-child::before { bottom: -20px; }
+
+        @keyframes stage-pulse {
+            0% { background-position: 0 -200px; }
+            100% { background-position: 0 0; }
+        }
+
         .stage-aside::before {
             content: "";
             position: absolute;
             top: -18px;
             bottom: -18px;
             left: 28px;
-            width: 1px;
-            background: linear-gradient(var(--line), rgba(216, 168, 77, 0.56));
+            width: 0;
+            border-left: 2px dashed color-mix(in srgb, currentColor 35%, transparent);
+            background: none;
+            z-index: 0;
+        }
+
+        .stage:first-child .stage-aside::before {
+            top: -38px;
+            border-top: 2px dashed color-mix(in srgb, currentColor 35%, transparent);
+            border-radius: 16px 0 0 0;
+            width: 60px;
+        }
+
+        .stage:last-child .stage-aside::before {
+            bottom: -38px;
+            border-bottom: 2px dashed color-mix(in srgb, currentColor 35%, transparent);
+            border-radius: 0 0 0 16px;
+            width: 60px;
+        }
+
+        .stage:first-child::after {
+            content: "";
+            position: absolute;
+            top: -23px;
+            left: 85px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            box-shadow: 0 0 12px 2px currentColor;
+            z-index: 2;
+        }
+
+        .stage:last-child::after {
+            content: "";
+            position: absolute;
+            bottom: -23px;
+            left: 85px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            box-shadow: 0 0 12px 2px currentColor;
+            z-index: 2;
         }
 
         .stage-aside::after {
