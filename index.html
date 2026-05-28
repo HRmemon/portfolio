@@ -751,6 +751,7 @@
         .node svg {
             width: 32px;
             height: 32px;
+            flex-shrink: 0;
             margin-bottom: 8px;
             color: currentColor;
             stroke: currentColor;
@@ -839,8 +840,8 @@
         }
 
         .ingest-map .node {
-            min-height: 78px;
-            height: 78px;
+            min-height: 90px;
+            height: 90px;
         }
 
         .source-stack {
@@ -864,6 +865,7 @@
         .source svg {
             width: 24px;
             height: 24px;
+            flex-shrink: 0;
             color: var(--green);
             stroke: currentColor;
             fill: none;
@@ -1103,13 +1105,13 @@
             display: grid;
             grid-template-columns: 78px 32px 78px 34px 132px 34px 96px 32px 96px;
             align-items: center;
-            min-height: 326px;
+            min-height: 360px;
         }
 
         .build-map .node {
             min-width: 0;
-            min-height: 86px;
-            height: 86px;
+            min-height: 100px;
+            height: 100px;
         }
 
         .build-map .connector[style*="border: 0"] {
@@ -1140,8 +1142,8 @@
 
         .split-lines, .merge-lines {
             position: absolute;
-            top: 43px;
-            bottom: 43px;
+            top: 50px;
+            bottom: 50px;
             width: 17px;
             z-index: 0;
             pointer-events: none;
@@ -1209,7 +1211,7 @@
             top: -5px;
             left: 288px;
             right: 60px;
-            height: 25px;
+            height: 21px;
             border-top: 1px dashed rgba(216, 168, 77, 0.58);
             border-left: 1px dashed rgba(216, 168, 77, 0.58);
             border-bottom: 0;
@@ -1236,7 +1238,7 @@
             top: -1px;
             right: -12px;
             width: 12px;
-            height: 125px;
+            height: 135px;
             border-top: 1px dashed rgba(216, 168, 77, 0.58);
             border-right: 1px dashed rgba(216, 168, 77, 0.58);
             border-radius: 0 12px 0 0;
@@ -1257,7 +1259,7 @@
             bottom: -5px;
             left: 288px;
             right: 60px;
-            height: 25px;
+            height: 21px;
             border-bottom: 1px dashed rgba(216, 168, 77, 0.58);
             border-left: 1px dashed rgba(216, 168, 77, 0.58);
             border-top: 0;
@@ -1284,7 +1286,7 @@
             bottom: -1px;
             right: -12px;
             width: 12px;
-            height: 125px;
+            height: 135px;
             border-bottom: 1px dashed rgba(216, 168, 77, 0.58);
             border-right: 1px dashed rgba(216, 168, 77, 0.58);
             border-radius: 0 0 12px 0;
@@ -1344,8 +1346,8 @@
 
         .deploy-map .node {
             min-width: 0;
-            min-height: 96px;
-            height: 96px;
+            min-height: 114px;
+            height: 114px;
             border-color: rgba(159, 201, 133, 0.28);
             color: var(--green);
         }
