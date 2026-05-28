@@ -1884,6 +1884,165 @@
                 flex-direction: column;
             }
         }
+
+        /* Experience Section */
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .exp-title-block {
+            max-width: 440px;
+        }
+        .exp-stats-card {
+            width: 320px;
+            padding: 24px;
+        }
+        .exp-stat-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .exp-stat {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .exp-stat .stat-icon {
+            width: 18px;
+            height: 18px;
+            color: var(--green);
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+        .exp-stat .stat-val {
+            font-size: 1.1rem;
+            font-weight: bold;
+            width: 36px;
+        }
+        .exp-stat .stat-label {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .exp-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        .exp-item {
+            display: flex;
+            gap: 40px;
+        }
+        .exp-date-loc {
+            width: 160px;
+            flex-shrink: 0;
+            position: relative;
+            padding-top: 8px;
+        }
+        .exp-date-loc::before {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 28px;
+            bottom: -40px;
+            border-left: 1px dashed rgba(159, 201, 133, 0.4);
+        }
+        .exp-item:last-child .exp-date-loc::before {
+            display: none;
+        }
+        .exp-date {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: var(--green);
+            margin-bottom: 8px;
+            font-family: var(--mono);
+        }
+        .timeline-dot {
+            width: 9px;
+            height: 9px;
+            background: var(--green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(159, 201, 133, 0.6);
+        }
+        .exp-loc {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--muted);
+            font-size: 0.85rem;
+            padding-left: 21px;
+        }
+        .exp-loc svg {
+            width: 14px;
+            height: 14px;
+        }
+        .exp-card {
+            flex: 1;
+            padding: 24px 32px;
+        }
+        .exp-card-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        .role-info h3 {
+            font-size: 1.2rem;
+            margin: 0 0 4px 0;
+            color: var(--text);
+        }
+        .company-name {
+            font-size: 0.95rem;
+            font-family: var(--mono);
+        }
+        .exp-bullets {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .exp-bullets li {
+            position: relative;
+            padding-left: 20px;
+            color: #cdcdcd;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .exp-bullets li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--green);
+        }
+
+        @media (max-width: 860px) {
+            .exp-header {
+                flex-direction: column;
+            }
+            .exp-item {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .exp-date-loc::before {
+                display: none;
+            }
+            .exp-card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -2188,6 +2347,174 @@
                                 </div>
                                 <div class="mini-metric">
                                     <small class="hidden-note" data-note="incident retrospective pending">CPU usage suspiciously calm</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="stage container reveal" id="experience">
+                    <aside class="stage-aside">
+                        <div class="stage-code" style="font-size: 0.85rem; letter-spacing: 0;">EX</div>
+                        <h2 class="stage-title">Experience</h2>
+                        <p class="stage-desc">My journey so far</p>
+                    </aside>
+                    
+                    <div class="stage-main">
+                        <div class="exp-header">
+                            <div class="exp-title-block">
+                                <div class="prompt">&gt; cd experience</div>
+                                <h2 style="font-size: 2.5rem; margin: 16px 0; color: var(--text);">Experience that<br>shaped <span class="green">how I build.</span></h2>
+                                <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; max-width: 420px;">A timeline of teams, systems and problems that helped me grow from writing code to shipping production systems.</p>
+                            </div>
+                            <div class="exp-stats-card panel side-card">
+                                <div class="panel-head" style="margin-bottom: 16px;"><span class="prompt">&gt; cat journey.log</span></div>
+                                <div class="exp-stat-list">
+                                    <div class="exp-stat">
+                                        <svg viewBox="0 0 24 24" class="stat-icon"><path d="M4 7h16v14H4z"/><path d="M8 7V5c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v2"/></svg>
+                                        <span class="stat-val green">5+</span>
+                                        <span class="stat-label">Years of experience</span>
+                                    </div>
+                                    <div class="exp-stat">
+                                        <svg viewBox="0 0 24 24" class="stat-icon"><path d="M9 2H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-4"/><path d="M9 2h6v4H9z"/><path d="M9 12h6"/><path d="M9 16h6"/></svg>
+                                        <span class="stat-val green">20+</span>
+                                        <span class="stat-label">Projects delivered</span>
+                                    </div>
+                                    <div class="exp-stat">
+                                        <svg viewBox="0 0 24 24" class="stat-icon"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+                                        <span class="stat-val green">Multiple</span>
+                                        <span class="stat-label">Domains & industries</span>
+                                    </div>
+                                    <div class="exp-stat">
+                                        <svg viewBox="0 0 24 24" class="stat-icon"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                                        <span class="stat-val green">Always</span>
+                                        <span class="stat-label">Learning</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="exp-timeline">
+                            <div class="exp-item">
+                                <div class="exp-date-loc">
+                                    <div class="exp-date"><span class="timeline-dot"></span>Mar 2025 - Present</div>
+                                    <div class="exp-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Pakistan</div>
+                                </div>
+                                <div class="exp-card panel">
+                                    <div class="exp-card-header">
+                                        <div class="role-info">
+                                            <h3>Lead Software Engineer</h3>
+                                            <div class="company-name green">Parhako</div>
+                                        </div>
+                                    </div>
+                                    <ul class="exp-bullets">
+                                        <li>Led backend architecture and development for an AI SaaS platform using Next.js, Express, TypeScript, PostgreSQL, Docker, and AWS.</li>
+                                        <li>Designed an LLM orchestration layer that coordinated 100+ API keys across multiple providers with built-in rate limiting, retry logic, fallback strategies, and load distribution. Reduced inference costs while maintaining reliability.</li>
+                                        <li>Architected AI processing pipelines for MCQ generation with stages for document chunking, structured output generation, automated validation, and response aggregation.</li>
+                                        <li>Built real time systems for live mock tests, concurrent sessions, and leaderboards that handled high volume student activity.</li>
+                                        <li>Introduced validation passes using regex checks and secondary LLM verification to catch bad output before it reached users.</li>
+                                        <li>Managed AWS infrastructure and deployment workflows using Terraform, Docker, S3, SES, and load-balanced containerized services with ECS.</li>
+                                        <li>Worked closely with product and engineering teams to prioritize features, improve internal tooling, and ship production systems quickly.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="exp-item">
+                                <div class="exp-date-loc">
+                                    <div class="exp-date"><span class="timeline-dot"></span>Apr 2024 - Feb 2025</div>
+                                    <div class="exp-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</div>
+                                </div>
+                                <div class="exp-card panel">
+                                    <div class="exp-card-header">
+                                        <div class="role-info">
+                                            <h3>Senior Software Engineer</h3>
+                                            <div class="company-name green">TopDevSpace LLC</div>
+                                        </div>
+                                    </div>
+                                    <ul class="exp-bullets">
+                                        <li>Managed Django data pipelines on HPC clusters and resolved orchestration race conditions, cutting processing time by 70%.</li>
+                                        <li>Integrated Stripe and QuickBooks workflows into AWS Elasticsearch and LLM-based reporting systems for automated financial summaries.</li>
+                                        <li>Worked with product and infrastructure teams to ship backend services and integrations.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="exp-item">
+                                <div class="exp-date-loc">
+                                    <div class="exp-date"><span class="timeline-dot"></span>Aug 2023 - Mar 2024</div>
+                                    <div class="exp-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</div>
+                                </div>
+                                <div class="exp-card panel">
+                                    <div class="exp-card-header">
+                                        <div class="role-info">
+                                            <h3>Software Engineer</h3>
+                                            <div class="company-name green">TopDevSpace LLC</div>
+                                        </div>
+                                    </div>
+                                    <ul class="exp-bullets">
+                                        <li>Decoupled a large Angular and Node.js monorepo into separate repositories, which fixed recurring CI/CD failures and unblocked the QA team.</li>
+                                        <li>Delivered a SaaS MVP in four sprints using NestJS and PostgreSQL in collaboration with product stakeholders.</li>
+                                        <li>Improved deployment workflows and backend maintainability across multiple services.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="exp-item">
+                                <div class="exp-date-loc">
+                                    <div class="exp-date"><span class="timeline-dot"></span>Apr 2023 - Sep 2023</div>
+                                    <div class="exp-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</div>
+                                </div>
+                                <div class="exp-card panel">
+                                    <div class="exp-card-header">
+                                        <div class="role-info">
+                                            <h3>Software Engineering Intern</h3>
+                                            <div class="company-name green">Bitnine Global Inc.</div>
+                                        </div>
+                                    </div>
+                                    <ul class="exp-bullets">
+                                        <li>Wrote documentation and answered developer questions about PostgreSQL and Sequelize.</li>
+                                        <li>Answered 40+ database engineering questions on StackOverflow, reaching roughly 29,000 developers.</li>
+                                        <li>Built frontend components for a database visualization dashboard using JavaScript and CSS.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="exp-item">
+                                <div class="exp-date-loc">
+                                    <div class="exp-date"><span class="timeline-dot"></span>Apr 2022 - Jun 2022</div>
+                                    <div class="exp-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Pakistan</div>
+                                </div>
+                                <div class="exp-card panel">
+                                    <div class="exp-card-header">
+                                        <div class="role-info">
+                                            <h3>Software Engineering Intern</h3>
+                                            <div class="company-name green">Erays Technology</div>
+                                        </div>
+                                    </div>
+                                    <ul class="exp-bullets">
+                                        <li>Built a real-time foot posture heat-map visualization system using JavaScript, Python, and SVG rendering.</li>
+                                        <li>Wrote interpolation and SVG transformation scripts to turn sensor data into smooth visual maps.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="exp-item">
+                                <div class="exp-date-loc">
+                                    <div class="exp-date"><span class="timeline-dot"></span>Jun 2020 - Jan 2022</div>
+                                    <div class="exp-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</div>
+                                </div>
+                                <div class="exp-card panel">
+                                    <div class="exp-card-header">
+                                        <div class="role-info">
+                                            <h3>Freelance Software Engineer</h3>
+                                            <div class="company-name green">Incio</div>
+                                        </div>
+                                    </div>
+                                    <ul class="exp-bullets">
+                                        <li>Built scheduling and meeting integrations using Zoom and Google Meet APIs.</li>
+                                        <li>Developed invoicing and calendar modules for a business management SaaS platform.</li>
+                                        <li>Implemented backend and frontend features with React, Node.js, and MongoDB.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
