@@ -1898,12 +1898,13 @@
             justify-content: space-between;
             gap: 40px;
             margin-bottom: 40px;
+            padding-left: 68px;
         }
         .exp-title-block {
             max-width: 440px;
         }
         .exp-stats-card {
-            width: 320px;
+            width: 330px;
             padding: 24px;
         }
         .exp-stat-list {
@@ -1923,11 +1924,12 @@
             fill: none;
             stroke: currentColor;
             stroke-width: 2;
+            flex-shrink: 0;
         }
         .exp-stat .stat-val {
             font-size: 1.1rem;
             font-weight: bold;
-            width: 36px;
+            min-width: 40px;
         }
         .exp-stat .stat-label {
             color: var(--muted);
