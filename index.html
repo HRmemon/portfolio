@@ -577,10 +577,14 @@
         }
 
         .stage:first-child .stage-aside::before {
-            top: -38px;
+            top: -58px;
             border-top: 2px dashed color-mix(in srgb, currentColor 35%, transparent);
             border-radius: 16px 0 0 0;
             width: 60px;
+        }
+
+        #ingest.stage:first-child .stage-aside::before {
+            top: -58px;
         }
 
         .stage:last-child .stage-aside::before {
@@ -706,6 +710,7 @@
         .diagram {
             min-height: 246px;
             padding: 20px;
+            overflow: visible;
         }
 
         .panel-head {
@@ -1805,6 +1810,119 @@
             .hero-stats {
                 max-width: 560px;
             }
+
+            #ingest,
+            #build,
+            #deploy,
+            #monitor {
+                grid-template-columns: 220px minmax(0, 1fr);
+                gap: 18px;
+                align-items: stretch;
+                padding-block: 22px;
+            }
+
+            #ingest .stage-aside,
+            #build .stage-aside,
+            #deploy .stage-aside,
+            #monitor .stage-aside {
+                padding: 28px 14px 28px 68px;
+            }
+
+            #ingest .stage-aside::before,
+            #build .stage-aside::before,
+            #deploy .stage-aside::before,
+            #monitor .stage-aside::before {
+                top: -18px;
+                bottom: -18px;
+                height: auto;
+            }
+
+            #ingest .stage-desc,
+            #build .stage-desc,
+            #deploy .stage-desc,
+            #monitor .stage-desc {
+                font-size: 0.82rem;
+                line-height: 1.62;
+            }
+
+            #ingest .stage-list,
+            #build .stage-list,
+            #deploy .stage-list,
+            #monitor .stage-list {
+                grid-template-columns: 1fr;
+                gap: 6px;
+                margin-top: 14px;
+            }
+
+            #ingest .stage-list li:nth-child(n+5),
+            #build .stage-list li:nth-child(n+5),
+            #deploy .stage-list li:nth-child(n+5),
+            #monitor .stage-list li:nth-child(n+5) {
+                display: none;
+            }
+
+            #ingest .stage-main,
+            #build .stage-main,
+            #deploy .stage-main {
+                grid-template-columns: minmax(0, 1fr) minmax(176px, 0.28fr);
+                gap: 12px;
+            }
+
+            #ingest .diagram,
+            #build .diagram,
+            #deploy .diagram,
+            #monitor > .diagram {
+                min-height: 222px;
+                padding: 16px;
+                overflow: visible;
+            }
+
+            #ingest .ingest-map {
+                grid-template-columns: 118px minmax(24px, 0.5fr) minmax(82px, 1fr) minmax(24px, 0.36fr) minmax(82px, 1fr) minmax(24px, 0.36fr) minmax(82px, 1fr);
+            }
+
+            #build .build-map {
+                width: 100%;
+                grid-template-columns: 62px 20px 62px 20px minmax(92px, 1fr) 20px 76px 20px 76px;
+            }
+
+            #deploy .deploy-map {
+                gap: 6px;
+            }
+
+            #ingest .node,
+            #build .node,
+            #deploy .node {
+                min-width: 0;
+                padding: 9px 7px;
+                font-size: 0.64rem;
+            }
+
+            #ingest .node svg,
+            #build .node svg,
+            #deploy .node svg {
+                width: 25px;
+                height: 25px;
+            }
+
+            #ingest .source {
+                gap: 8px;
+                padding-inline: 9px;
+                font-size: 0.68rem;
+            }
+
+            #ingest .side-card,
+            #build .side-card,
+            #deploy .side-card {
+                padding: 16px;
+            }
+
+            #ingest .humor-line,
+            #build .proof-chip,
+            #deploy .infra-chip {
+                min-height: 0;
+                padding: 9px 10px;
+            }
         }
 
         @media (min-width: 561px) and (max-width: 860px) {
@@ -1825,6 +1943,152 @@
 
             .hero h1 {
                 max-width: 12ch;
+            }
+
+            #ingest,
+            #build,
+            #deploy,
+            #monitor {
+                gap: 12px;
+                padding-block: 18px;
+            }
+
+            #ingest::after,
+            #build::after,
+            #deploy::after,
+            #monitor::after {
+                display: none;
+            }
+
+            #ingest::before,
+            #build::before,
+            #deploy::before,
+            #monitor::before {
+                animation: none;
+            }
+
+            #ingest .stage-aside,
+            #build .stage-aside,
+            #deploy .stage-aside,
+            #monitor .stage-aside {
+                display: grid;
+                grid-template-columns: 1fr;
+                padding: 24px 0 2px 68px;
+            }
+
+            #ingest .stage-aside::after,
+            #build .stage-aside::after,
+            #deploy .stage-aside::after,
+            #monitor .stage-aside::after {
+                display: none;
+            }
+
+            #ingest .stage-aside::before,
+            #build .stage-aside::before,
+            #deploy .stage-aside::before,
+            #monitor .stage-aside::before {
+                top: -18px;
+                bottom: -18px;
+                height: auto;
+            }
+
+            .stage:first-child .stage-aside::before {
+                top: -58px;
+            }
+
+            #ingest .stage-code,
+            #build .stage-code,
+            #deploy .stage-code,
+            #monitor .stage-code {
+                position: static;
+                width: max-content;
+                margin-bottom: 8px;
+                padding: 4px 8px;
+                border: 1px solid currentColor;
+                border-radius: 999px;
+                background: rgba(8, 9, 9, 0.64);
+            }
+
+            #ingest .stage-title,
+            #build .stage-title,
+            #deploy .stage-title,
+            #monitor .stage-title {
+                grid-column: 1 / -1;
+                font-size: 1.42rem;
+            }
+
+            #ingest .stage-desc,
+            #build .stage-desc,
+            #deploy .stage-desc,
+            #monitor .stage-desc {
+                grid-column: 1 / -1;
+                max-width: 58ch;
+                margin-top: 8px;
+                font-size: 0.84rem;
+                line-height: 1.58;
+            }
+
+            #ingest .stage-list,
+            #build .stage-list,
+            #deploy .stage-list,
+            #monitor .stage-list {
+                grid-column: 1 / -1;
+                grid-template-columns: 1fr;
+                gap: 6px;
+                max-width: 58ch;
+                margin-top: 10px;
+            }
+
+            #ingest .stage-list li:nth-child(n+4),
+            #build .stage-list li:nth-child(n+4),
+            #deploy .stage-list li:nth-child(n+4),
+            #monitor .stage-list li:nth-child(n+4),
+            #ingest .humor-line:nth-child(n+4),
+            #build .proof-chip:nth-child(n+4),
+            #deploy .infra-chip:nth-child(n+5),
+            #monitor .metric:nth-child(n+5),
+            #monitor .log-row:nth-child(n+4) {
+                display: none;
+            }
+
+            #ingest .stage-main,
+            #build .stage-main,
+            #deploy .stage-main {
+                gap: 12px;
+                margin-left: 68px;
+            }
+
+            #monitor > .diagram {
+                margin-left: 68px;
+            }
+
+            #ingest .diagram,
+            #build .diagram,
+            #deploy .diagram,
+            #monitor > .diagram {
+                min-height: auto;
+                padding: 16px;
+            }
+
+            #ingest .side-card,
+            #build .side-card,
+            #deploy .side-card,
+            #monitor .side-card {
+                padding: 15px;
+            }
+
+            #ingest .humor-strip,
+            #build .proof-grid,
+            #deploy .infra-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 8px;
+            }
+
+            #ingest .humor-line,
+            #build .proof-chip,
+            #deploy .infra-chip {
+                min-height: 0;
+                padding: 10px;
             }
         }
 
@@ -1952,6 +2216,20 @@
             .source-stack {
                 grid-template-columns: 1fr 1fr;
             }
+
+            #ingest .panel-head,
+            #build .panel-head,
+            #deploy .panel-head,
+            #monitor .panel-head {
+                margin-bottom: 10px;
+            }
+
+            #ingest .source,
+            #build .node,
+            #deploy .node,
+            #monitor .metric {
+                min-height: 62px;
+            }
         }
 
         @media (max-width: 560px) {
@@ -2031,6 +2309,124 @@
             .source-stack,
             .stage-list {
                 grid-template-columns: 1fr;
+            }
+
+            #ingest,
+            #build,
+            #deploy,
+            #monitor {
+                gap: 10px;
+                padding-block: 14px;
+            }
+
+            #ingest .stage-aside,
+            #build .stage-aside,
+            #deploy .stage-aside,
+            #monitor .stage-aside {
+                padding-top: 20px;
+                padding-bottom: 0;
+            }
+
+            #ingest .stage-title,
+            #build .stage-title,
+            #deploy .stage-title,
+            #monitor .stage-title {
+                font-size: 1.28rem;
+            }
+
+            #ingest .stage-desc,
+            #build .stage-desc,
+            #deploy .stage-desc,
+            #monitor .stage-desc {
+                margin-top: 7px;
+                font-size: 0.82rem;
+                line-height: 1.52;
+            }
+
+            #ingest .stage-aside::before,
+            #build .stage-aside::before,
+            #deploy .stage-aside::before,
+            #monitor .stage-aside::before {
+                top: -18px;
+                left: 22px;
+                bottom: -18px;
+                height: auto;
+            }
+
+            .stage:first-child .stage-aside::before {
+                top: -58px;
+            }
+
+            #ingest::before,
+            #build::before,
+            #deploy::before,
+            #monitor::before {
+                animation: none;
+            }
+
+            #ingest .stage-aside::after,
+            #build .stage-aside::after,
+            #deploy .stage-aside::after,
+            #monitor .stage-aside::after {
+                top: 20px;
+                left: 8px;
+            }
+
+            #ingest .stage-code,
+            #build .stage-code,
+            #deploy .stage-code,
+            #monitor .stage-code {
+                top: 28px;
+                left: 16px;
+            }
+
+            #ingest .stage-list,
+            #build .stage-list,
+            #deploy .stage-list,
+            #monitor .stage-list {
+                display: none;
+            }
+
+            #ingest .diagram,
+            #build .diagram,
+            #deploy .diagram,
+            #monitor > .diagram {
+                padding: 12px;
+            }
+
+            #ingest .source-stack .source:nth-child(n+3),
+            #ingest .humor-line:nth-child(n+3),
+            #build .proof-chip:nth-child(n+3),
+            #deploy .infra-chip:nth-child(n+5),
+            #monitor .metric:nth-child(n+4),
+            #monitor .monitor-lower .side-card:nth-child(n+3),
+            #monitor .log-row:nth-child(n+3) {
+                display: none;
+            }
+
+            #ingest .source-stack,
+            #ingest .humor-strip,
+            #build .proof-grid,
+            #deploy .infra-grid,
+            #monitor .monitor-grid,
+            #monitor .monitor-lower {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            #ingest .source,
+            #ingest .node,
+            #build .node,
+            #deploy .node,
+            #monitor .metric {
+                min-height: 54px;
+            }
+
+            #ingest .humor-line,
+            #build .proof-chip,
+            #deploy .infra-chip,
+            #monitor .side-card {
+                padding: 10px;
             }
 
             .footer-inner {
