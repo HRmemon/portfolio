@@ -853,7 +853,7 @@
             position: relative;
             z-index: 1;
             display: grid;
-            grid-template-columns: 150px minmax(90px, 1fr) 115px minmax(60px, 0.45fr) 115px minmax(60px, 0.45fr) 115px;
+            grid-template-columns: minmax(110px, 150px) minmax(40px, 1fr) minmax(82px, 115px) minmax(26px, 0.4fr) minmax(82px, 115px) minmax(26px, 0.4fr) minmax(82px, 115px);
             align-items: center;
             min-height: 212px;
         }
@@ -1119,10 +1119,10 @@
         .build-map {
             position: relative;
             z-index: 1;
-            width: min(100%, 612px);
+            width: 100%;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 78px 32px 78px 34px 132px 34px 96px 32px 96px;
+            grid-template-columns: minmax(52px, 78px) minmax(16px, 32px) minmax(52px, 78px) minmax(18px, 34px) minmax(84px, 1fr) minmax(18px, 34px) minmax(62px, 96px) minmax(16px, 32px) minmax(62px, 96px);
             align-items: center;
             min-height: 360px;
         }
@@ -1878,12 +1878,12 @@
             }
 
             #ingest .ingest-map {
-                grid-template-columns: 118px minmax(24px, 0.5fr) minmax(82px, 1fr) minmax(24px, 0.36fr) minmax(82px, 1fr) minmax(24px, 0.36fr) minmax(82px, 1fr);
+                grid-template-columns: minmax(96px, 118px) minmax(16px, 0.5fr) minmax(64px, 1fr) minmax(16px, 0.36fr) minmax(64px, 1fr) minmax(16px, 0.36fr) minmax(64px, 1fr);
             }
 
             #build .build-map {
                 width: 100%;
-                grid-template-columns: 62px 20px 62px 20px minmax(92px, 1fr) 20px 76px 20px 76px;
+                grid-template-columns: minmax(42px, 62px) minmax(12px, 20px) minmax(42px, 62px) minmax(12px, 20px) minmax(62px, 1fr) minmax(12px, 20px) minmax(52px, 76px) minmax(12px, 20px) minmax(52px, 76px);
             }
 
             #deploy .deploy-map {
