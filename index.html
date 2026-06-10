@@ -1841,6 +1841,15 @@
                 height: auto;
             }
 
+            #experience .stage-aside::before {
+                top: 0;
+                bottom: -18px;
+                height: auto;
+                border-top: none;
+                border-radius: 0;
+                width: 0;
+            }
+
             #ingest .stage-desc,
             #build .stage-desc,
             #deploy .stage-desc,
@@ -1960,14 +1969,17 @@
             #ingest::after,
             #build::after,
             #deploy::after,
-            #monitor::after {
+            #monitor::after,
+            #experience::after {
                 display: none;
             }
 
             #ingest::before,
             #build::before,
             #deploy::before,
-            #monitor::before {
+            #monitor::before,
+            #experience::before {
+                display: none;
             }
 
             #ingest .stage-aside,
@@ -2384,7 +2396,8 @@
             #ingest::before,
             #build::before,
             #deploy::before,
-            #monitor::before {
+            #monitor::before,
+            #experience::before {
                 display: none;
             }
 
@@ -2619,6 +2632,9 @@
         @media (max-width: 860px) {
             #experience {
                 grid-template-columns: 0px minmax(0, 1fr);
+            }
+            #experience .stage-aside::before {
+                display: none;
             }
             .exp-header {
                 flex-direction: column;
