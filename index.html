@@ -1999,6 +1999,13 @@
                 display: none;
             }
 
+            #experience .stage-aside::after {
+                top: 28px;
+                left: 14px;
+                border-color: var(--green);
+                box-shadow: 0 0 0 7px rgba(159, 201, 133, 0.04);
+            }
+
             #ingest .stage-aside::before,
             #build .stage-aside::before,
             #deploy .stage-aside::before,
@@ -2405,7 +2412,8 @@
             #ingest .stage-aside::after,
             #build .stage-aside::after,
             #deploy .stage-aside::after,
-            #monitor .stage-aside::after {
+            #monitor .stage-aside::after,
+            #experience .stage-aside::after {
                 top: 20px;
                 left: 8px;
             }
@@ -2413,7 +2421,8 @@
             #ingest .stage-code,
             #build .stage-code,
             #deploy .stage-code,
-            #monitor .stage-code {
+            #monitor .stage-code,
+            #experience .stage-code {
                 top: 28px;
                 left: 16px;
             }
@@ -2465,6 +2474,13 @@
             #deploy .infra-chip,
             #monitor .side-card {
                 padding: 10px;
+            }
+
+            .exp-date-loc {
+                padding-left: 56px;
+            }
+            .timeline-dot {
+                left: 22px;
             }
 
             .footer-inner {
@@ -2644,19 +2660,22 @@
                 width: 60px;
                 background: radial-gradient(circle 8px at 0 100%, var(--green) 3px, transparent 4px);
             }
-            #experience::after,
-            #experience .stage-aside::after {
+            #experience::after {
                 display: none;
+            }
+            #experience .stage-aside::after {
+                border-color: var(--green);
+                box-shadow: 0 0 0 7px rgba(159, 201, 133, 0.04);
             }
             .exp-header {
                 flex-direction: column;
             }
             .exp-date-loc {
                 width: 100%;
-                padding-left: 56px;
+                padding-left: 68px;
             }
             .timeline-dot {
-                left: 18px;
+                left: 28px;
             }
             .exp-item {
                 flex-direction: column;
@@ -2977,7 +2996,7 @@
 
                 <section class="stage reveal" id="experience">
                     <aside class="stage-aside">
-                        <div class="stage-code" style="font-size: 0.85rem; letter-spacing: 0;">EX</div>
+                        <div class="stage-code">EX</div>
                     </aside>
                     
                     <div style="flex: 1; min-width: 0;">
