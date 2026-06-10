@@ -1969,8 +1969,7 @@
             #ingest::after,
             #build::after,
             #deploy::after,
-            #monitor::after,
-            #experience::after {
+            #monitor::after {
                 display: none;
             }
 
@@ -2634,7 +2633,12 @@
                 grid-template-columns: 0px minmax(0, 1fr);
             }
             #experience .stage-aside::before {
-                display: none;
+                top: -18px;
+                bottom: auto;
+                height: 380px;
+                border-top: none;
+                border-radius: 0;
+                width: 0;
             }
             .exp-header {
                 flex-direction: column;
