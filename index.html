@@ -2345,10 +2345,6 @@
                 min-width: 0;
             }
 
-            .icon-link {
-                display: none;
-            }
-
             .hero h1 {
                 max-width: 11ch;
                 margin-top: 16px;
@@ -3343,6 +3339,12 @@
         }
 
         setInterval(driftMetrics, 2600);
+
+        // URL cleanup: rewrite /index.html to / for cleaner address bar representation
+        if (window.location.pathname.endsWith('/index.html')) {
+            const cleanPath = window.location.pathname.replace(/\/index\.html$/, '/');
+            window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+        }
     </script>
 </body>
 </html>
