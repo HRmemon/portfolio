@@ -2041,7 +2041,20 @@
                 border-top: 2px dashed color-mix(in srgb, currentColor 25%, transparent);
                 border-radius: 16px 0 0 0;
                 width: 60px;
-                background: radial-gradient(circle 8px at 0 0, currentColor 3px, transparent 4px);
+            }
+
+            #ingest::before {
+                display: block;
+                content: "";
+                position: absolute;
+                top: -42px;
+                left: 85px;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: currentColor;
+                box-shadow: 0 0 12px 2px currentColor;
+                z-index: 2;
             }
 
             #ingest .stage-code,
@@ -2403,6 +2416,10 @@
 
             .stage:first-child .stage-aside::before {
                 top: -58px;
+            }
+
+            #ingest::after {
+                left: 79px;
             }
 
             #ingest::before,
