@@ -30,7 +30,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Load Google Fonts asynchronously to unblock first paint -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
     <style>
         :root {
             color-scheme: dark;
@@ -72,6 +74,7 @@
         body {
             min-height: 100vh;
             font-family: var(--sans);
+            font-size-adjust: from-font; /* Prevent layout shift when web fonts swap in */
             color: var(--text);
             background:
                 radial-gradient(circle at 18% 10%, rgba(159, 201, 133, 0.075), transparent 26rem),
@@ -548,6 +551,8 @@
             border-top: 1px solid rgba(205, 199, 187, 0.07);
             padding: 18px 0;
             position: relative;
+            content-visibility: auto;
+            contain-intrinsic-size: auto 400px;
         }
 
         .stage:first-child {
@@ -1519,6 +1524,8 @@
 
         .environment {
             padding-bottom: 56px;
+            content-visibility: auto;
+            contain-intrinsic-size: auto 600px;
         }
 
         .env-grid {
